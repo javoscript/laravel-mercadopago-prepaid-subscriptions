@@ -1,0 +1,31 @@
+{
+    "name": "javoscript/laravel-mercadopago-prepaid-subscriptions",
+    "description": "A prepaid subscriptions package for the Laravel framework implemented with MercadoPago as the payment method.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Javier Ugarte",
+            "email": "javougarte@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Javoscript\\PrepaidSubs\\":"src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Javoscript\\PrepaidSubs\\Tests\\":"tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html tests/results/coverage"
+    }
+}

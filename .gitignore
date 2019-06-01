@@ -1,0 +1,5 @@
+vendor
+tests/results
+.phpunit.result.cache
+composer.lock
+*.swp
