@@ -12,7 +12,8 @@
     "minimum-stability": "stable",
     "require": {},
     "require-dev": {
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^8.1",
+        "orchestra/testbench": "^3.5"
     },
     "autoload": {
         "psr-4": {
@@ -27,5 +28,15 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html tests/results/coverage"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Javoscript\\PrepaidSubs\\PrepaidSubsServiceProvider"
+            ],
+            "aliases": {
+                "PrepaidSubs": "Javoscript\\PrepaidSubs\\Facades\\PrepaidSubs"
+            }
+        }
     }
 }
