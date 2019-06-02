@@ -1,5 +1,7 @@
 <?php
 
 return [
-    "greet" => "Bye!"
+    "model" => "\App\User",
+
+    "greet" => "Bye!",
 ];

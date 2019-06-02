@@ -31,7 +31,7 @@ class PrepaidSubsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         // Load package's migrations
-        /* $this->loadMigrationsFrom(__DIR__.'/../database/migrations'); */
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // OR publish them (any benefits?)
         /* $this->publishes([ */
