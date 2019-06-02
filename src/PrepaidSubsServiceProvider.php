@@ -3,7 +3,7 @@
 namespace Javoscript\PrepaidSubs;
 
 use Illuminate\Support\ServiceProvider;
-use Javoscript\PrepaidSubs\Example;
+use Javoscript\PrepaidSubs\PrepaidSubs;
 
 /**
  * Class PrepaidSubsServiceProvider
@@ -48,7 +48,7 @@ class PrepaidSubsServiceProvider extends ServiceProvider
     {
         // Bind a Facade
         $this->app->bind('prepaid-subs', function() {
-            return new Example();
+            return new PrepaidSubs();
         });
 
         // Add package config

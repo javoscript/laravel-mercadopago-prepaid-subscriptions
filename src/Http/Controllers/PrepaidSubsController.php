@@ -8,11 +8,11 @@ use Javoscript\PrepaidSubs\Facades\PrepaidSubs;
  * Class ExampleController
  * @author Javier Ugarte <javougarte@gmail.com>
  */
-class ExampleController
+class PrepaidSubsController
 {
-    public function greet()
+    public function plans()
     {
-        return PrepaidSubs::hello();
+        return PrepaidSubs::getPlans();
     }
 }
 
