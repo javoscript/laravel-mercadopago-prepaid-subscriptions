@@ -1,6 +1,6 @@
 <?php
 
-namespace Javoscript\PrepaidSubs\Http\Controllers;
+namespace Javoscript\PrepaidSubs\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -10,7 +10,7 @@ use Javoscript\PrepaidSubs\Models\Account;
 use Javoscript\PrepaidSubs\Models\Payment;
 
 /**
- * Class ExampleController
+ * Class PrepaidSubsController
  * @author Javier Ugarte <javougarte@gmail.com>
  */
 class PrepaidSubsController
@@ -18,16 +18,6 @@ class PrepaidSubsController
     public function plans()
     {
         return PrepaidSubs::getPlans();
-    }
-
-    protected function rules()
-    {
-        return [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email' => 'required|email',
-            'plan_id' => 'required|integer',
-        ];
     }
 
     public function generatePayment(Request $request, $model_id) {
@@ -50,5 +40,12 @@ class PrepaidSubsController
         return "ok";
     }
 
-}
+    public function paymentNotifications(Request $request, Payment $payment)
+    {
+        // TODO: Update $payment with MP status
+        // TODO: Update account expiration date with plan time value
 
+
+        return response(["ok"], 200);
+    }
+}

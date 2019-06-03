@@ -5,7 +5,7 @@ namespace Javoscript\PrepaidSubs\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ExampleModel
+ * Class Account
  * @author Javier Ugarte <javougarte@gmail.com>
  */
 class Account extends Model
@@ -16,9 +16,18 @@ class Account extends Model
         'expiration_date',
     ];
 
+    protected $fillable = [
+        'expiration_date',
+        'model_id',
+    ];
+
     public function model()
     {
         return $this->belongsTo(config('prepaid-subs.model'), 'model_id');
     }
 
+    public function payments()
+    {
+        return $this->hasMany('Javoscript\PrepaidSubs\Models\Payment');
+    }
 }

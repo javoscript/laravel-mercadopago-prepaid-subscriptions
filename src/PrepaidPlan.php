@@ -8,6 +8,7 @@ namespace Javoscript\PrepaidSubs;
  */
 class PrepaidPlan implements \JsonSerializable
 {
+    protected $id = null;
     protected $time_value = null;
     protected $time_unit = null;
     protected $name = null;
@@ -16,10 +17,11 @@ class PrepaidPlan implements \JsonSerializable
     protected $details = [];
 
 
-    public function __construct($time_value, $time_unit, $name, $price, $old_price, $details)
+    public function __construct($id, $time_value = 1, $time_unit = "month", $name = "Plan", $price = 1, $old_price = null, $details = [])
     {
         // TODO: check valid values
 
+        $this->id = $id;
         $this->time_value = $time_value;
         $this->time_unit = $time_unit;
         $this->name = $name;
@@ -32,6 +34,10 @@ class PrepaidPlan implements \JsonSerializable
     /*
      * GETTERS
      * */
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getTimeValue()
     {
         return $this->time_value;
@@ -65,14 +71,22 @@ class PrepaidPlan implements \JsonSerializable
     public function JsonSerialize()
     {
         return [
-            "time" => [
-                "value" => $this->time_value,
-                "unit" => $this->time_unit,
-            ],
+            "time_value" => $this->time_value,
+            "time_unit" => $this->time_unit,
             "price" => $this->price,
             "old_price" => $this->old_price,
             "name" => $this->name,
             "details" => $this->details
         ];
+    }
+
+    public function toJson()
+    {
+        return json_encode($this);
+    }
+
+    public function toArray()
+    {
+        return get_object_vars($this);
     }
 }
