@@ -3,12 +3,11 @@
 namespace Javoscript\PrepaidSubs;
 
 use Illuminate\Support\ServiceProvider;
-use Javoscript\PrepaidSubs\Example;
+use Illuminate\Support\Facades\View;
 
-/**
- * Class PrepaidSubsServiceProvider
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+use Javoscript\PrepaidSubs\PrepaidSubs;
+
+
 class PrepaidSubsServiceProvider extends ServiceProvider
 {
 
@@ -26,12 +25,17 @@ class PrepaidSubsServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/prepaid-subs'),
         ], 'views');
 
+        // View composer for the included plans partial
+        View::composer('prepaid-subs::partials.plans', function ($view) {
+            $view->with('prepaid_subs__plans', (new PrepaidSubs())->getPlans());
+        });
+
         // Load package's routes
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         // Load package's migrations
-        /* $this->loadMigrationsFrom(__DIR__.'/../database/migrations'); */
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // OR publish them (any benefits?)
         /* $this->publishes([ */
@@ -48,7 +52,7 @@ class PrepaidSubsServiceProvider extends ServiceProvider
     {
         // Bind a Facade
         $this->app->bind('prepaid-subs', function() {
-            return new Example();
+            return new PrepaidSubs();
         });
 
         // Add package config
