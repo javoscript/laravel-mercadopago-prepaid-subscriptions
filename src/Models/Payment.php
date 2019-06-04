@@ -22,7 +22,7 @@ class Payment extends Model
         'request_key',
         'client',
         'email',
-        'state',
+        'status',
         'plan',
         'account_id'
     ];

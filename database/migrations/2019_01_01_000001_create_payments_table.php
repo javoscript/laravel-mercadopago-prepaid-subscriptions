@@ -23,7 +23,7 @@ class CreatePaymentsTable extends Migration
             $table->string('request_key')->nullable();
             $table->string('client')->nullable();
             $table->string('email')->nullable();
-            $table->string('state')->default(Javoscript\PrepaidSubs\Models\Payment::MP_PENDING);
+            $table->string('status')->default(Javoscript\PrepaidSubs\Models\Payment::MP_PENDING);
             $table->json('plan');
 
         });

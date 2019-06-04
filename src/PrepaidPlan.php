@@ -58,7 +58,7 @@ class PrepaidPlan implements \JsonSerializable
     {
         return $this->old_price;
     }
-    public function details()
+    public function getDetails()
     {
         return $this->details;
     }
