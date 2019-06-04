@@ -1,8 +1,6 @@
 <?php
 
 return [
-    "model" => "\App\User",
-
     "route_prefix" => "prepaid-subs",
 
     "free_trial" => "7 days", // a string that \Carbon\Carbon is able to add to Carbon\Carbon::now()

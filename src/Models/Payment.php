@@ -56,4 +56,22 @@ class Payment extends Model
         return $this->belongsTo('Javoscript\PrepaidSubs\Models\Account');
     }
 
+    public function getStatusBadgeAttribute()
+    {
+        $badge = '<span class="badge badge-secondary">pendiente</span>';
+        switch ($this->status) {
+            case self::MP_SUCCESS:
+                $badge = '<span class="badge badge-success">exitoso</span>';
+                break;
+            case self::MP_ERROR:
+                $badge = '<span class="badge badge-danger">error</span>';
+                break;
+            case self::MP_PENDING:
+            default:
+                $badge = '<span class="badge badge-secondary">pendiente</span>';
+                break;
+        }
+
+        return $badge;
+    }
 }
