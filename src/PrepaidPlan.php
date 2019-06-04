@@ -2,10 +2,7 @@
 
 namespace Javoscript\PrepaidSubs;
 
-/**
- * Class PrepaidPlan
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class PrepaidPlan implements \JsonSerializable
 {
     protected $id = null;

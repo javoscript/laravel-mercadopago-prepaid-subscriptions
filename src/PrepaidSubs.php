@@ -5,10 +5,7 @@ namespace Javoscript\PrepaidSubs;
 use Javoscript\PrepaidSubs\PrepaidPlan;
 use Javoscript\PrepaidSubs\Models\Account;
 
-/**
- * Class PrepaidSubs
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class PrepaidSubs
 {
     public function getExpirationDateFor($model_id)

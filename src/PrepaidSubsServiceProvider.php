@@ -7,10 +7,7 @@ use Illuminate\Support\Facades\View;
 
 use Javoscript\PrepaidSubs\PrepaidSubs;
 
-/**
- * Class PrepaidSubsServiceProvider
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class PrepaidSubsServiceProvider extends ServiceProvider
 {
 

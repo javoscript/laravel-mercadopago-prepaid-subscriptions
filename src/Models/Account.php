@@ -4,10 +4,7 @@ namespace Javoscript\PrepaidSubs\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Account
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class Account extends Model
 {
     protected $table = 'prepaid_subs_accounts';

@@ -5,10 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 
-/**
- * Class CreateExampleTable
- * @author Javier Ugarte <javougarte@gmail.com>
- */
 class CreatePaymentsTable extends Migration
 {
     public function up()

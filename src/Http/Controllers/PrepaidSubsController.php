@@ -9,10 +9,7 @@ use Javoscript\PrepaidSubs\Facades\PrepaidSubs;
 use Javoscript\PrepaidSubs\Models\Account;
 use Javoscript\PrepaidSubs\Models\Payment;
 
-/**
- * Class ExampleController
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class PrepaidSubsController
 {
     public function plans()

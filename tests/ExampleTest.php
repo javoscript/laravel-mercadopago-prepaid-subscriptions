@@ -5,10 +5,7 @@ namespace Javoscript\PrepaidSubs\Tests;
 use PHPUnit\Framework\TestCase;
 use Javoscript\PrepaidSubs\Example;
 
-/**
- * Class ExampleTest
- * @author Javier Ugarte <javougarte@gmail.com>
- */
+
 class ExampleTest extends TestCase
 {
 
