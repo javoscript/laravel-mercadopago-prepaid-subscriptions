@@ -111,7 +111,7 @@ class PrepaidSubsController
             }
 
             $payment->client = $mp_payment->payer->name . ' ' .$mp_payment->payer->surname;
-            $payment->email = $mp_payment->email;
+            $payment->email = $mp_payment->payer->email;
             $payment->save();
 
             if ($payment->status == Payment::MP_SUCCESS) {
