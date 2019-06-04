@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-<form action="{{ route(config('prepaid-subs.route_prefix').'.payment.create', $model_id) }}" method="post" class="form">
+<form action="{{ route(config('prepaid-subs.route_prefix').'.payment.create', $account) }}" method="post" class="form">
     @csrf
 
     <div class="form-group">

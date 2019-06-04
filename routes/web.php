@@ -9,7 +9,7 @@ Route::namespace('Javoscript\PrepaidSubs\Http\Controllers')->middleware('web')->
     Route::view('/payment/error', 'prepaid-subs::payments.error')->name('payment.error');
     Route::view('/payment/pending', 'prepaid-subs::payments.pending')->name('payment.pending');
 
-    Route::post('/generate-payment/{model_id}', 'PrepaidSubsController@generatePayment')->name('payment.create');
+    Route::post('/generate-payment/{account}', 'PrepaidSubsController@generatePayment')->name('payment.create');
     Route::middleware('auth')->group(function() {
     });
 });

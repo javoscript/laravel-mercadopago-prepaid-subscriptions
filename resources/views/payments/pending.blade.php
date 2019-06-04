@@ -71,7 +71,7 @@
                 </div>
                 <div class="links">
                     Gracias por la compra! <br>
-                    Estamos esperando que se procese correctamente.
+                    Estamos esperando que se procese correctamente el pago.
                     <div>
                         @if (Route::has('home'))
                             <a class="btn btn-default" href="{{ route('home') }}">Volver</a>

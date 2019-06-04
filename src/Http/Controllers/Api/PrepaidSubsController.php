@@ -27,9 +27,8 @@ class PrepaidSubsController
         ];
     }
 
-    public function generatePayment(Request $request, $model_id) {
+    public function generatePayment(Request $request, Account $account) {
         $validated_data = $request->validate($this->rules());
-        $account = Account::where('model_id', $model_id)->first();
 
         $plan = PrepaidSubs::getPlans($validated_data["prepaid_subs__plan_id"]);
         if (!$plan) {
@@ -51,7 +50,7 @@ class PrepaidSubsController
             [
                 "id"          => $plan->getId(),
                 "title"       => $plan->getName(),
-                "description" => $plan->getDetails(true), // TODO: implement getDetails() as one string
+                "description" => '', //$plan->getDetails(true), // TODO: implement getDetails() as one string
                 "category_id" => 1,
                 "unit_price"  => $plan->getPrice(),
                 "currency_id" => 'ARS',
@@ -112,12 +111,12 @@ class PrepaidSubsController
             }
 
             // TODO: Add client name & email from MP payment
-
+            $payment->client = $mp_payment->payer->name . ' ' .$mp_payment->payer->surname;
+            $payment->email = $mp_payment->email;
             $payment->save();
             if ($payment->status == Payment::MP_SUCCESS) {
                 $payment->applyPaymentPlan();
             }
-            // TODO: extend account expiration date
         }
         return response(["ok"], 200);
     }

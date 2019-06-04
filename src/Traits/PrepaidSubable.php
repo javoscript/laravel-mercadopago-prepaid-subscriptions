@@ -15,7 +15,7 @@ trait PrepaidSubable
     {
         $account = $this->prepaid_subs_account;
         return ($account)
-            ? $account->expiration_date 
+            ? $account->expiration_date
             : null;
     }
 
