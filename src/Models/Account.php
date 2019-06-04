@@ -15,12 +15,13 @@ class Account extends Model
 
     protected $fillable = [
         'expiration_date',
-        'model_id',
+        'prepaid_subable_id',
+        'prepaid_subable_type',
     ];
 
-    public function model()
+    public function prepaid_subable()
     {
-        return $this->belongsTo(config('prepaid-subs.model'), 'model_id');
+        return $this->morphTo();
     }
 
     public function payments()

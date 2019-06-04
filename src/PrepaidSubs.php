@@ -8,51 +8,13 @@ use Javoscript\PrepaidSubs\Models\Account;
 
 class PrepaidSubs
 {
-    public function getExpirationDateFor($model_id)
+
+    public function createAccountFor($model)
     {
-        $this->checkIsType($model_id, 'integer', __FUNCTION__);
-
-        $account = $this->getAccountFor($model_id);
-        return ($account) ? $account->expiration_date : null;
-    }
-
-    public function hasActiveSubscription($model_id)
-    {
-        $this->checkIsType($model_id, 'integer', __FUNCTION__);
-
-        $account = $this->getAccountFor($model_id);
-        if (! $account) {
-            return false;
-        }
-
-        return $account->expiration_date->endOfDay()->greaterThanOrEqualTo(\Carbon\Carbon::now());
-    }
-
-    public function daysLeftFor($model_id)
-    {
-        $this->checkIsType($model_id, 'integer', __FUNCTION__);
-
-        $account = $this->getAccountFor($model_id);
-        if (! $account) {
-            return null;
-        }
-
-        return \Carbon\Carbon::now()->endOfDay()->diffInDays($account->expiration_date->endOfDay(), false);
-    }
-
-    public function getAccountFor($model_id)
-    {
-        $this->checkIsType($model_id, 'integer', __FUNCTION__);
-
-        return Account::where('model_id', $model_id)->first();
-    }
-
-    public function createAccountFor($model_id)
-    {
-        $this->checkIsType($model_id, 'integer', __FUNCTION__);
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
 
         // Return previous account if exists
-        $prev_acc = $this->getAccountFor($model_id);
+        $prev_acc = $this->getAccountFor($model);
         if ($prev_acc) {
             return $prev_acc;
         }
@@ -65,11 +27,61 @@ class PrepaidSubs
         }
 
         $account = Account::create([
-            'model_id' => $model_id,
+            'prepaid_subable_id' => $model->id,
+            'prepaid_subable_type' => get_class($model),
             'expiration_date' => $starting_date,
         ]);
 
         return $account;
+    }
+
+
+    public function getExpirationDateFor($model)
+    {
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
+
+        $account = $this->getAccountFor($model);
+        return ($account) ? $account->expiration_date : null;
+    }
+
+    public function hasActiveSubscription($model)
+    {
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
+
+        $account = $this->getAccountFor($model);
+        if (! $account) {
+            return false;
+        }
+
+        return $account->expiration_date->endOfDay()->greaterThanOrEqualTo(\Carbon\Carbon::now());
+    }
+
+    public function daysLeftFor($model)
+    {
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
+
+        $account = $this->getAccountFor($model);
+        if (! $account) {
+            return -1;
+        }
+
+        return \Carbon\Carbon::now()->endOfDay()->diffInDays($account->expiration_date->endOfDay(), false);
+    }
+
+    public function getAccountFor($model)
+    {
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
+
+        return Account::where('prepaid_subable_id', $model->id)->where('prepaid_subable_type', get_class($model))->first();
+    }
+
+    public function getPaymentsFor($model)
+    {
+        $this->checkIsA($model, 'Illuminate\Database\Eloquent\Model', __FUNCTION__);
+
+        $account = $this->getAccountFor($model);
+
+        return ($account) ? $account->payments : collect([]);
     }
 
 
@@ -101,11 +113,9 @@ class PrepaidSubs
     }
 
 
-    protected function checkIsType($variable, $type, $function)
+    protected function checkIsA($object, $class, $function)
     {
-        $var_type = gettype($variable);
-
-        if ( $var_type != $type ) {
+        if ( ! is_a($object, $class)) {
             throw new \InvalidArgumentException("${function}: wrong parameters received.");
         }
     }

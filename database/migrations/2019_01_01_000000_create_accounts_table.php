@@ -13,7 +13,9 @@ class CreateAccountsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
-            $table->unsignedBigInteger('model_id');
+            $table->unsignedBigInteger('prepaid_subable_id');
+            $table->string('prepaid_subable_type');
+
             $table->date('expiration_date');
         });
     }
