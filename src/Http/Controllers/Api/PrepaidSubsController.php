@@ -110,10 +110,10 @@ class PrepaidSubsController
                     break;
             }
 
-            // TODO: Add client name & email from MP payment
             $payment->client = $mp_payment->payer->name . ' ' .$mp_payment->payer->surname;
             $payment->email = $mp_payment->email;
             $payment->save();
+
             if ($payment->status == Payment::MP_SUCCESS) {
                 $payment->applyPaymentPlan();
             }
