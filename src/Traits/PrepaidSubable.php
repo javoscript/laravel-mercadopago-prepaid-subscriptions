@@ -11,6 +11,11 @@ trait PrepaidSubable
         return $this->morphOne('Javoscript\PrepaidSubs\Models\Account', 'prepaid_subable');
     }
 
+    public function prepaid_subs_createAccount()
+    {
+        return \PrepaidSubs::createAccountFor($this);
+    }
+
     public function prepaid_subs_getExpirationDate()
     {
         $account = $this->prepaid_subs_account;
