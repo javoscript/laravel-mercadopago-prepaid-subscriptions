@@ -54,7 +54,7 @@ class PrepaidSubsController
         $preference->items = [
             [
                 "id"          => $plan->getId(),
-                "title"       => $plan->getName(),
+                "title"       => $plan->getName() . " (".config('prepaid-subs.service_name').")",
                 "description" => '', //$plan->getDetails(true), // TODO: implement getDetails() as one string
                 "category_id" => 1,
                 "unit_price"  => $plan->getPrice(),
