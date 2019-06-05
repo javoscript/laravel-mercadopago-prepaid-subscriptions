@@ -11,6 +11,8 @@ return [
     "mp_sandbox_public_key" => env('MP_SANDBOX_PUBLIC_KEY', ''),
     "mp_sandbox_access_token" => env('MP_SANDBOX_ACCESS_TOKEN', ''),
 
+    "register_default_callback_routes" => true,
+
     "plans" => [
         [
             "time_value" => 1,
