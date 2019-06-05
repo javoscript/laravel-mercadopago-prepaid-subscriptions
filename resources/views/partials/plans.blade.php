@@ -48,6 +48,10 @@
                                 </ul>
                             </div>
                             <div class="card-footer text-center text-white bg-primary border-primary">
+                                @if ($plan->getOldPrice())
+                                <small><del>${{ $plan->getOldPrice() }}</del></small><br>
+                                @endif
+
                                 ${{ $plan->getPrice() }}
                             </div>
                         </div>

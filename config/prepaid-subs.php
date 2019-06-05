@@ -3,6 +3,8 @@
 return [
     "route_prefix" => "prepaid-subs",
 
+    "service_name" => "My cool service",
+
     "free_trial" => "7 days", // a string that \Carbon\Carbon is able to add to Carbon\Carbon::now()
 
     "sandbox_mode" => true,
@@ -15,11 +17,11 @@ return [
 
     "plans" => [
         [
+            "name" => "1 mes",
             "time_value" => 1,
             "time_unit" => "month",
             "price" => 99,
             "old_price" => null,
-            "name" => "1 mes",
             "details" => [
                 "El más básico, sólo un mes",
                 "Sin ahorros",
@@ -28,22 +30,22 @@ return [
             ]
         ],
         [
+            "name" => "3 meses",
             "time_value" => 3,
             "time_unit" => "month",
             "price" => 199,
             "old_price" => 300,
-            "name" => "3 meses",
             "details" => [
                 "Para quien piensa a mediano plazo, tres meses",
                 "Quiero probarlo, y quiero ahorrar",
             ]
         ],
         [
+            "name" => "12 meses",
             "time_value" => 12,
             "time_unit" => "month",
             "price" => 999,
             "old_price" => 1200,
-            "name" => "12 meses",
             "details" => [
                 "Me gustó, y lo quiero para siempre",
                 "Plan ahorro",

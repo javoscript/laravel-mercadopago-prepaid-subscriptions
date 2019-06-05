@@ -26,6 +26,6 @@ class Account extends Model
 
     public function payments()
     {
-        return $this->hasMany('Javoscript\PrepaidSubs\Models\Payment');
+        return $this->hasMany('Javoscript\PrepaidSubs\Models\Payment')->latest();
     }
 }
