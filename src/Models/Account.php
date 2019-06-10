@@ -21,7 +21,8 @@ class Account extends Model
 
     protected $appends = [
         'subscription_status',
-        'payments'
+        'payments',
+        'days_left'
     ];
 
 
@@ -51,5 +52,10 @@ class Account extends Model
     public function getPaymentsAttribute()
     {
         return $this->payments()->get();
+    }
+
+    public function getDaysLeftAttribute()
+    {
+        return \PrepaidSubs::daysLeftFor($this->prepaid_subable);
     }
 }
