@@ -28,6 +28,10 @@ class Payment extends Model
         'plan' => 'object'
     ];
 
+    protected $appends = [
+        'readable_status'
+    ];
+
     public function applyPaymentPlan()
     {
         switch ($this->plan->time_unit) {
@@ -73,5 +77,38 @@ class Payment extends Model
         }
 
         return $badge;
+    }
+
+    public function getReadableStatusAttribute()
+    {
+        switch ($this->status) {
+            case self::MP_SUCCESS:
+                return 'exito';
+                break;
+            case self::MP_ERROR:
+                return 'error';
+                break;
+            case self::MP_PENDING:
+            default:
+                return 'pendiente';
+                break;
+        }
+        return 'pendiente';
+    }
+
+    /*
+     * SCOPES
+     * */
+    public function scopeSuccessful($query)
+    {
+        return $query->where('status', self::MP_SUCCESS);
+    }
+    public function scopeFailed($query)
+    {
+        return $query->where('status', self::MP_ERROR);
+    }
+    public function scopePending($query)
+    {
+        return $query->where('status', self::MP_PENDING);
     }
 }

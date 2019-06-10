@@ -68,12 +68,13 @@ class PrepaidPlan implements \JsonSerializable
     public function JsonSerialize()
     {
         return [
+            "id"         => $this->id,
             "time_value" => $this->time_value,
-            "time_unit" => $this->time_unit,
-            "price" => $this->price,
-            "old_price" => $this->old_price,
-            "name" => $this->name,
-            "details" => $this->details
+            "time_unit"  => $this->time_unit,
+            "price"      => $this->price,
+            "old_price"  => $this->old_price,
+            "name"       => $this->name,
+            "details"    => $this->details
         ];
     }
 

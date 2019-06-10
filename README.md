@@ -129,7 +129,13 @@ Valor por defecto: `true`
 
 Cuando esta variable tenga el valor `true`, se podrá obervar el cartelito de *Sandbox Mode* al proceder al pago con MercadoPago.
 
-TODO: add image
+<p align="center">
+    ![alt text](./docs/sandbox_mode.png "MercadoPago sandbox mode")
+</p>
+
+<p align="center">
+    Integración con MercadoPago en modo de prueba (*sandbox mode*)
+</p>
 
 #### `plans`
 Indica los planes que ofrecerá el paquete. Se debe respetar el formato del `array` que se vé en el ejemplo.
@@ -179,7 +185,13 @@ Indica los planes que ofrecerá el paquete. Se debe respetar el formato del `arr
 
 Todos estos valores estarán disponibles para usar en donde sea necesario en el código a través de objetos de la clase **Javoscript\PrepaidSubs\PrepaidPlan** (ver más adelante).
 
-TODO: add example image
+<p align="center">
+    ![alt text](./docs/plans_partial.png "Included default plans partials")
+</p>
+
+<p align="center">
+    `partial` inlcuido con el paquete: formulario con datos necesarios y elección de plan.
+</p>
 
 ## Uso
 TODO: add image
